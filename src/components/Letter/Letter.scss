@@ -1,0 +1,15 @@
+.keyboard__list {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-content: space-between;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 400px;
+  flex-wrap: wrap;
+  .keyboard__item {
+    flex-basis: 35px;
+    margin: 1px;
+    padding: 5px;
+  }
+}
