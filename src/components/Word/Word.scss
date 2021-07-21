@@ -1,0 +1,19 @@
+.word {
+  position: absolute;
+  display: flex;
+  top: 10%;
+  right: 30%;
+  height: 50px;
+  align-items: center;
+  &__letter {
+    box-sizing: border-box;
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+}
