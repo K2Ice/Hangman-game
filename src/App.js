@@ -7,10 +7,8 @@ import Word from "./components/Word/Word"
 function App({ data }) {
   const [word, setWord] = useState("")
   const [hangmanElements, setHangmanElements] = useState([])
-
-  const handleLetterSelect = (letter) => {
-    handleLetterCheck(letter)
-  }
+  const [result, setResult] = useState("")
+  const [hitLetters, setHitLetters] = useState(0)
 
   const handleLetterCheck = (letter) => {
     let checkWord = word
@@ -32,14 +30,16 @@ function App({ data }) {
     if (hitLettersArray.length) {
       //funkcja ukazująca trafione litery
       let letters = document.querySelectorAll(".word__letter")
-      console.log(letters)
       hitLettersArray.map((index) => (letters[index].textContent = letter))
+      setHitLetters(() => hitLetters + hitLettersArray.length)
+      if (hitLetters + 1 === word.length) setResult("wygrałeś")
     } else if (!hitLettersArray.length && hangmanElements.length > 0) {
       const elements = [...hangmanElements]
       const changeElement = elements.splice(0, 1)
       changeElement[0].style.animationPlayState = "running"
       if (elements.length === 0) {
         //funkcja wyświetlająca informację o przegranej
+        setResult("przegrałeś")
       } else {
         setHangmanElements(elements)
       }
@@ -55,7 +55,8 @@ function App({ data }) {
     <div className="App">
       <Hangman />
       <Word guessWord={word} />
-      <Keyboard select={handleLetterSelect} />
+      <Keyboard select={handleLetterCheck} />
+      {result}
     </div>
   )
 }

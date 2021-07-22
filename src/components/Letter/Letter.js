@@ -45,7 +45,10 @@ const Letter = ({ letterSelect }) => {
     <button
       key={`${index} + 1000`}
       className="keyboard__item"
-      onClick={() => letterSelect(letter)}
+      onClick={(event) => {
+        event.target.disabled = true
+        letterSelect(letter)
+      }}
       disabled={false}
     >
       {letter.toUpperCase()}
