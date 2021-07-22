@@ -6,6 +6,7 @@ import Word from "./components/Word/Word"
 
 function App({ data }) {
   const [word, setWord] = useState("")
+  const [hangmanElements, setHangmanElements] = useState([])
 
   const handleLetterSelect = (letter) => {
     handleLetterCheck(letter)
@@ -33,12 +34,23 @@ function App({ data }) {
       let letters = document.querySelectorAll(".word__letter")
       console.log(letters)
       hitLettersArray.map((index) => (letters[index].textContent = letter))
+    } else if (!hitLettersArray.length && hangmanElements.length > 0) {
+      const elements = [...hangmanElements]
+      const changeElement = elements.splice(0, 1)
+      changeElement[0].style.animationPlayState = "running"
+      if (elements.length === 0) {
+        //funkcja wyświetlająca informację o przegranej
+      } else {
+        setHangmanElements(elements)
+      }
     }
   }
   useEffect(() => {
     setWord(data[Math.floor(Math.random() * data.length)])
+    const gibbetElements = document.querySelectorAll(".gibbet > div")
+    const manElements = document.querySelectorAll(".man > div")
+    setHangmanElements([...gibbetElements, ...manElements])
   }, [data])
-
   return (
     <div className="App">
       <Hangman />

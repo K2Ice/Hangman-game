@@ -29,17 +29,19 @@
 }
 .gibbet {
   &__lowBar {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(85%, 5%, 15vw, 0.5vw);
-    animation: lowBarAnimation linear 1s 1 both;
   }
   &__middleBar {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(10%, 15%, 0.5vw, 75%);
-    animation: lowBarAnimation linear 1s 1 both;
   }
   &__topBar {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(10%, 15%, 15%, 0.5vw);
   }
   &__line {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(10%, 25%, 0.5vw, 5%);
   }
 }
@@ -48,30 +50,36 @@
   top: 14%;
   left: calc(25% + 0.25vw);
   &__head {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(0, 0, 3vw, 3vw);
     transform: translateX(-50%);
     border-radius: 50%;
   }
   &__body {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(1vw, 0, 1vw, 8vw);
     transform: translateX(-45%);
   }
   &__rightArm {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(5vw, 0, 5vw, 0.7vw);
     transform-origin: 0 50%;
     transform: rotate(-45deg);
   }
   &__leftArm {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(5vw, 1px, 5vw, 0.7vw);
     transform-origin: 0 50%;
     transform: rotate(225deg);
   }
   &__rightLeg {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(8vw, 0, 5vw, 0.7vw);
     transform-origin: 0 50%;
     transform: rotate(50deg);
   }
   &__leftLeg {
+    animation: lowBarAnimation linear 1s 1 backwards;
     @include position(8vw, 1px, 5vw, 0.7vw);
     transform-origin: 0 50%;
     transform: rotate(130deg);
