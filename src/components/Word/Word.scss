@@ -1,9 +1,10 @@
 .word {
-  position: absolute;
+  // position: absolute;
   display: flex;
-  top: 10%;
-  right: 30%;
+  // top: 10%;
+  // right: 30%;
   height: 50px;
+  grid-area: word;
   align-items: center;
   &__letter {
     box-sizing: border-box;

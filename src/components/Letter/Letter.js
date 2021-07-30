@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import "./Letter.scss"
 
-const letters = [
+const keyboardLetters = [
   "a",
   "ą",
   "b",
@@ -40,20 +40,37 @@ const letters = [
   "ż",
 ]
 
-const Letter = ({ letterSelect }) => {
+const Letter = ({ letterSelect, result }) => {
+  const [letters, setLetters] = useState([...keyboardLetters])
+
+  useEffect(() => {
+    if (letters.length)
+      document.addEventListener("keydown", (e) => {
+        letters.forEach((element, index) => {
+          if (element === e.key) {
+            let lettersArray = [...letters]
+            lettersArray.splice(index, 1)
+            letterSelect(element)
+            setLetters(lettersArray)
+          }
+        })
+      })
+  }, [])
+
   const lettersTab = letters.map((letter, index) => (
     <button
-      key={`${index} + 1000`}
+      key={`${index + 1000}`}
       className="keyboard__item"
       onClick={(event) => {
         event.target.disabled = true
         letterSelect(letter)
       }}
-      disabled={false}
+      disabled={result ? false : null}
     >
       {letter.toUpperCase()}
     </button>
   ))
+
   return <div className="keyboard__list">{lettersTab}</div>
 }
 
