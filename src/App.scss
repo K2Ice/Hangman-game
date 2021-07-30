@@ -1,0 +1,16 @@
+.App {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(20%, auto));
+  grid-template-rows: repeat(2, minmax(20%, auto));
+  grid-template-areas: "header  header" "hangman  word" " keyboard  keyboard";
+  h1 {
+    @media (max-width: 320px) {
+      & {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+.keyboard {
+  grid-area: keyboard;
+}
